@@ -15,10 +15,26 @@
                 <input class=" mt-2 bg-blue-600 px-5 py-2 rounded" type="submit" value="Create Task">
             </form>
         </div>
-        <div class="tasks p-10">
-            <div class="task w-72 px-3 py-4 outline-none rounded-md bg-zinc-800"></div>
+        <div class="tasks p-10 flex gap-4 flex-wrap">
+            <% if(files.length > 0 ) { %>
+            <% files.forEach (function(val){ %>
+                <div class="task w-72  px-3 py-4 outline-none rounded-md bg-zinc-800">
+                    <h1 class="text-white tracking-tighter text-2xl">Some task goes here...</h1>
+                    <a class="inline-block text-blue-500 mt-3" href="">Read more.</a>
+                </div>
+            <% }) %>
+
+            <% } else { %>
+                <h3 class="text-zinc-600">No task yet.</h3>
+
+                <% } %>
+            
+            
+        </div>
         </div>
     </div>
 
 </body>
 </html>
+
+ 
