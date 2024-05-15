@@ -23,7 +23,7 @@
                     <div class="flex justify-between items-center w-full  mt-3">
                         <a class="inline-block text-blue-500" href="/files/<%= val %>" >Read more..</a>
                         <a  class="text-zinc-600 " href="/edit/<%= val %>">Edit Filename</a>
-                        <a class="text-red-600" href="/delete/<%= val %>" onclick="deleteFile('<%= val %>')">Delete</a>
+                        <a class="text-red-600" href="/delete/<%= val %>" onclick="Delete('<%= val %>'); return false;">Delete</a>
                     </div>
                    
                 </div>

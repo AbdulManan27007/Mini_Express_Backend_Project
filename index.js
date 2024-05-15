@@ -10,6 +10,8 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "public")));
+const filesDirectory = path.join(__dirname, 'files');
+
 
  
 app.get('/', function(req,res){
@@ -44,10 +46,11 @@ app.post('/edit', function(req, res) {
     });
 });
 
-app.delete('/delete/:filename', function(req, res) {
+app.post('/delete/:filename', function(req, res) {
     const filename = req.params.filename;
+    const filePath = path.join(filesDirectory, filename);
 
-    fs.unlink(`./files/${filename}`, function(err) {
+    fs.unlink(filePath, function(err) {
         if (err) {
             console.error(err);
             return res.status(500).send('Error deleting file');
@@ -55,6 +58,7 @@ app.delete('/delete/:filename', function(req, res) {
         res.sendStatus(200); // Send a 200 OK response if deletion is successful
     });
 });
+
 
 app.post('/create', function(req,res){
 fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`, req.body.details, function(err){
